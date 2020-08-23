@@ -74,34 +74,19 @@ class MeanshiftPP:
         cnt = 0
         base =  3
         offsets = np.full((base**d, d), -1, dtype=np.int32)
-        time1 = datetime.now()
         generate_offsets_np(d, base, offsets)
-        time2 = datetime.now()
-        print("A", (time2-time1).total_seconds())
         
         while True:
           #print("Iteration: ", cnt, len(np.unique(X, axis=0)))
           cnt += 1
 
-          time3 = datetime.now()
           shift_np(n, d, base, self.bandwidth, offsets, X_shifted)
-          time4 = datetime.now()
-          print("B", (time4-time3).total_seconds())
-
+          
           if np.linalg.norm(np.subtract(X, X_shifted)) <= self.threshold:
             break
 
-          time5 = datetime.now()
-          print("C", (time5-time4).total_seconds())
-
           X = np.copy(X_shifted)
-          time6 = datetime.now()
-          print("D", (time6-time5).total_seconds())
-
-        time7 = datetime.now()
-
+          
         _, result = np.unique(X_shifted, return_inverse=True, axis=0)
-        time8 = datetime.now()
-        print("E", (time8-time7).total_seconds())
         
         return result
