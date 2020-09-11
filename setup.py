@@ -4,10 +4,10 @@ from Cython.Distutils import build_ext
 
 
 setup(
-    name='MeanshiftPP',
+    name='MeanShiftPP',
     version='1.0',
     cmdclass={'build_ext': build_ext},
-    ext_modules=[Extension("MeanshiftPP",
+    ext_modules=[Extension("MeanShiftPP",
                  sources=["meanshiftpp.pyx"],
                  language="c++",
                  include_dirs=[numpy.get_include()])],

@@ -39,7 +39,7 @@ cdef shift_np(n,
              <float *> np.PyArray_DATA(X_shifted))
 
 
-class MeanshiftPP:
+class MeanShiftPP:
     """
     Parameters
     ----------
