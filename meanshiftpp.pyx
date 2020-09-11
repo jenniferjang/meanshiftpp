@@ -91,8 +91,8 @@ class MeanshiftPP:
         offsets = np.full((base**d, d), -1, dtype=np.int32)
         generate_offsets_np(d, base, offsets)
         
-        while iteration < iterations or not iterations:
-          #print("Iteration: ", cnt, len(np.unique(X, axis=0)))
+        while iteration < self.iterations or not self.iterations:
+          #print("Iteration: %i, Number of clusters: %i" % (iteration, len(np.unique(X, axis=0))))
           iteration += 1
 
           shift_np(n, d, base, self.bandwidth, offsets, X_shifted)
